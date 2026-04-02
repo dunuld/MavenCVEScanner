@@ -1,5 +1,8 @@
 package com.example;
 
+import com.cvescanner.data.Dependency;
+import com.cvescanner.pomparser.IPomParser;
+import com.cvescanner.pomparser.PomParserImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -10,7 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PomParserTest {
+class IPomParserTest {
 
     @TempDir
     Path tempDir;
@@ -36,7 +39,7 @@ class PomParserTest {
                 """;
         Files.writeString(pomPath, content);
 
-        PomParser parser = new PomParserImpl();
+        IPomParser parser = new PomParserImpl();
         List<Dependency> dependencies = parser.parse(pomPath.toString());
 
         assertEquals(2, dependencies.size());
@@ -63,7 +66,7 @@ class PomParserTest {
                 """;
         Files.writeString(pomPath, content);
 
-        PomParser parser = new PomParserImpl();
+        IPomParser parser = new PomParserImpl();
         List<Dependency> dependencies = parser.parse(pomPath.toString());
 
         assertTrue(dependencies.isEmpty());
@@ -71,7 +74,7 @@ class PomParserTest {
 
     @Test
     void testParseNonExistentFile() {
-        PomParser parser = new PomParserImpl();
+        IPomParser parser = new PomParserImpl();
         List<Dependency> dependencies = parser.parse("non-existent-file.xml");
         assertTrue(dependencies.isEmpty());
     }

@@ -1,4 +1,4 @@
-package com.example;
+package com.cvescanner.data;
 
 public record Dependency(String groupId, String artifactId, String version) {
     @Override

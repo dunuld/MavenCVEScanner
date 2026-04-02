@@ -1,5 +1,10 @@
-package com.example;
+package com.cvescanner;
 
+import com.cvescanner.data.Dependency;
+import com.cvescanner.pomparser.IPomParser;
+import com.cvescanner.pomparser.PomParserImpl;
+import com.cvescanner.service.CveServiceImpl;
+import com.cvescanner.service.ICveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
@@ -18,14 +23,14 @@ public class Main implements Runnable {
         System.exit(exitCode);
     }
 
-    private PomParser parser = new PomParserImpl();
-    private CveService cveService = new CveServiceImpl();
+    private IPomParser parser = new PomParserImpl();
+    private ICveService cveService = new CveServiceImpl();
 
-    public void setParser(PomParser parser) {
+    public void setParser(IPomParser parser) {
         this.parser = parser;
     }
 
-    public void setCveService(CveService cveService) {
+    public void setCveService(ICveService cveService) {
         this.cveService = cveService;
     }
 

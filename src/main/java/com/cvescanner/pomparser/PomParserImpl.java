@@ -1,5 +1,6 @@
-package com.example;
+package com.cvescanner.pomparser;
 
+import com.cvescanner.data.Dependency;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.*;
@@ -7,9 +8,9 @@ import javax.xml.parsers.*;
 import java.io.File;
 import java.util.*;
 
-public class PomParserImpl implements PomParser {
+public class PomParserImpl implements IPomParser {
 
-    private static final Logger logger = LoggerFactory.getLogger(PomParserImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PomParserImpl.class);
 
     @Override
     public List<Dependency> parse(String path) {
@@ -36,7 +37,7 @@ public class PomParserImpl implements PomParser {
             }
 
         } catch (Exception e) {
-            logger.error("Error parsing pom.xml at {}", path, e);
+            LOGGER.error("Error parsing pom.xml at {}", path, e);
         }
 
         return deps;

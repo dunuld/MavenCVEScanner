@@ -1,6 +1,11 @@
 package com.example;
 
+import com.cvescanner.service.CveServiceImpl;
+import com.cvescanner.service.ICveService;
+import com.cvescanner.data.Dependency;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.cvescanner.http.HttpResponseData;
+import com.cvescanner.http.IHttpProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,9 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
-import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,12 +21,12 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CveServiceTest {
+class ICveServiceTest {
 
     @Mock
-    private HttpProvider httpProvider;
+    private IHttpProvider httpProvider;
 
-    private CveService cveService;
+    private ICveService cveService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach

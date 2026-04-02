@@ -1,5 +1,9 @@
 package com.example;
 
+import com.cvescanner.pomparser.IPomParser;
+import com.cvescanner.service.ICveService;
+import com.cvescanner.Main;
+import com.cvescanner.data.Dependency;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,10 +20,10 @@ import static org.mockito.Mockito.*;
 class MainTest {
 
     @Mock
-    private PomParser parser;
+    private IPomParser parser;
 
     @Mock
-    private CveService cveService;
+    private ICveService cveService;
 
     @InjectMocks
     private Main main;

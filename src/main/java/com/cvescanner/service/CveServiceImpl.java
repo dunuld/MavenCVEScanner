@@ -1,5 +1,8 @@
-package com.example;
+package com.cvescanner.service;
 
+import com.cvescanner.data.Dependency;
+import com.cvescanner.http.HttpResponseData;
+import com.cvescanner.http.IHttpProvider;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -8,24 +11,23 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CveServiceImpl implements CveService {
-    private static final Logger logger = LoggerFactory.getLogger(CveServiceImpl.class);
+public class CveServiceImpl implements ICveService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CveServiceImpl.class);
     private static final String NVD_URL =
             "https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=";
 
-    private final HttpProvider httpProvider;
+    private final IHttpProvider httpProvider;
     private final ObjectMapper objectMapper;
 
     public CveServiceImpl() {
-        this(HttpProvider.defaultProvider(), new ObjectMapper());
+        this(IHttpProvider.defaultProvider(), new ObjectMapper());
     }
 
-    public CveServiceImpl(HttpProvider httpProvider, ObjectMapper objectMapper) {
+    public CveServiceImpl(IHttpProvider httpProvider, ObjectMapper objectMapper) {
         this.httpProvider = httpProvider;
         this.objectMapper = objectMapper;
     }
@@ -65,7 +67,7 @@ public class CveServiceImpl implements CveService {
             }
 
         } catch (Exception e) {
-            logger.error("Error while querying NVD API: {}",  e.getMessage());
+            LOGGER.error("Error while querying NVD API: {}",  e.getMessage());
         }
 
         return results;
