@@ -1,4 +1,4 @@
-package com.example;
+package com.cvescanner.service;
 
 import com.cvescanner.service.CveServiceImpl;
 import com.cvescanner.service.ICveService;

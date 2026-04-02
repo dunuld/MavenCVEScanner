@@ -1,4 +1,4 @@
-package com.example;
+package com.cvescanner.pomparser;
 
 import com.cvescanner.data.Dependency;
 import com.cvescanner.pomparser.IPomParser;

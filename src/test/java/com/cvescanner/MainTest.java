@@ -1,8 +1,7 @@
-package com.example;
+package com.cvescanner;
 
 import com.cvescanner.pomparser.IPomParser;
 import com.cvescanner.service.ICveService;
-import com.cvescanner.Main;
 import com.cvescanner.data.Dependency;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

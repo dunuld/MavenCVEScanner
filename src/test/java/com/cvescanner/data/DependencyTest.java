@@ -1,4 +1,4 @@
-package com.example;
+package com.cvescanner.data;
 
 import com.cvescanner.data.Dependency;
 import org.junit.jupiter.api.Test;
