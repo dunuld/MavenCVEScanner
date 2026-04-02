@@ -89,9 +89,5 @@ mvn test
 └── README.md
 ```
 
-## License
-
-- **TODO:** Specify license (e.g., MIT, Apache 2.0).
-
 ---
 *Updated on 2026-04-02.*
