@@ -1,11 +1,9 @@
 package com.cvescanner.service;
 
-import com.cvescanner.service.CveServiceImpl;
-import com.cvescanner.service.ICveService;
 import com.cvescanner.data.Dependency;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.cvescanner.http.HttpResponseData;
 import com.cvescanner.http.IHttpProvider;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +14,8 @@ import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
