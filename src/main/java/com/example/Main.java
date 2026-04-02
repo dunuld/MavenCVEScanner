@@ -18,14 +18,22 @@ public class Main implements Runnable {
         System.exit(exitCode);
     }
 
+    private PomParser parser = new PomParserImpl();
+    private CveService cveService = new CveServiceImpl();
+
+    public void setParser(PomParser parser) {
+        this.parser = parser;
+    }
+
+    public void setCveService(CveService cveService) {
+        this.cveService = cveService;
+    }
+
     @Override
     public void run() {
         logger.info("Scanning: {}", pomPath);
 
-        PomParser parser = new PomParser();
         var dependencies = parser.parse(pomPath);
-
-        CveService cveService = new CveService();
 
         for (Dependency dep : dependencies) {
             var vulnerabilities = cveService.check(dep);
