@@ -1,8 +1,8 @@
 package com.cvescanner.data;
 
-import com.cvescanner.data.Dependency;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DependencyTest {
 

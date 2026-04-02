@@ -4,6 +4,8 @@ import com.cvescanner.data.Dependency;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.*;
+
+import javax.xml.XMLConstants;
 import javax.xml.parsers.*;
 import java.io.File;
 import java.util.*;
@@ -19,6 +21,7 @@ public class PomParserImpl implements IPomParser {
         try {
             File file = new File(path);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(file);
 
