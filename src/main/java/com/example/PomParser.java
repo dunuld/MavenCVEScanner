@@ -1,11 +1,15 @@
 package com.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
 import java.io.File;
 import java.util.*;
 
 public class PomParser {
+
+    private static final Logger logger = LoggerFactory.getLogger(PomParser.class);
 
     public List<Dependency> parse(String path) {
         List<Dependency> deps = new ArrayList<>();
@@ -31,7 +35,7 @@ public class PomParser {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error parsing pom.xml at {}", path, e);
         }
 
         return deps;

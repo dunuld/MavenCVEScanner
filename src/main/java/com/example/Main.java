@@ -1,10 +1,14 @@
 package com.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "cve-scan", mixinStandardHelpOptions = true,
         description = "Scan pom.xml for vulnerable dependencies")
 public class Main implements Runnable {
+
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     @CommandLine.Parameters(index = "0", description = "Path to pom.xml")
     private String pomPath;
@@ -16,7 +20,7 @@ public class Main implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Scanning: " + pomPath);
+        logger.info("Scanning: {}", pomPath);
 
         PomParser parser = new PomParser();
         var dependencies = parser.parse(pomPath);
@@ -27,9 +31,9 @@ public class Main implements Runnable {
             var vulnerabilities = cveService.check(dep);
 
             if (!vulnerabilities.isEmpty()) {
-                System.out.println("[!] " + dep);
+                logger.warn("[!] Found vulnerabilities for {}", dep);
                 vulnerabilities.forEach(v ->
-                        System.out.println("  -> " + v));
+                        logger.warn("  -> {}", v));
             }
         }
     }
